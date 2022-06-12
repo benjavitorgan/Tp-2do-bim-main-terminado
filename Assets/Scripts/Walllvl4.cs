@@ -25,7 +25,6 @@ public class Walllvl4 : MonoBehaviour
 
         if (col.gameObject.name == "NewPlayer")
         {
-
             while (i == 0)
             {
                 yOffset += 0.15f;
@@ -33,14 +32,6 @@ public class Walllvl4 : MonoBehaviour
                 Instantiate(escalon).transform.position += new Vector3(0, yOffset, zOffset);
                 //Destroy(gameObject, 0.3f);
                 i++;
-
-                if (player.transform.position.x > 48)
-                {
-                    i = 1;
-
-                }
-
-
             }
         }
 

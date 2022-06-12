@@ -91,9 +91,10 @@ public class PlayerCollision : MonoBehaviour
         else
         {
             myAM.Perdiste();
-            Destroy(gameObject);
+            gameObject.SetActive(false);
             GO.text = "¡Game Over!";
             camara.SetActive(true);
+            Time.timeScale = 0;
         }
         
     }
@@ -101,5 +102,6 @@ public class PlayerCollision : MonoBehaviour
     public void reiniciar()
     {
         SceneManager.LoadScene("SampleScene");
+        Time.timeScale = 1;
     }
 }
