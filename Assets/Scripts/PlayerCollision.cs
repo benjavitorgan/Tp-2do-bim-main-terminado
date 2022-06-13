@@ -9,6 +9,7 @@ public class PlayerCollision : MonoBehaviour
     //Audio
 
     public SoundBehaviour myAM;
+    public BackSong myBS;
 
     //Colisiones tiempo y vida
 
@@ -73,7 +74,7 @@ public class PlayerCollision : MonoBehaviour
 
             if (col.gameObject.name == "Final")
             {
-                myAM.gano();
+                myBS.win();
                 Ganaste.text = "¡GANASTE!";
                 camara.SetActive(true);
                 Time.timeScale = 0;

@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundBehaviour : MonoBehaviour
 {
     AudioSource source;
-    public AudioClip muerte, salto, perdiste, ganaste;
+    public AudioClip muerte, salto, perdiste;
 
     // Start is called before the first frame update
     void Start()
@@ -29,12 +29,6 @@ public class SoundBehaviour : MonoBehaviour
     public void Muerte()
     {
         source.clip = muerte;
-        source.Play();
-    }
-
-    public void gano()
-    {
-        source.clip = ganaste;
         source.Play();
     }
 
