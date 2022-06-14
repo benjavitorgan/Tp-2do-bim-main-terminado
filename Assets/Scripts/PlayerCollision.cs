@@ -18,7 +18,7 @@ public class PlayerCollision : MonoBehaviour
     public Button restart;
     public int counter;
     public Text vidas, GO, Ganaste, nivel, txtCountdown, txtboton;
-    public GameObject InicialBase, checkpoint, camara;
+    public GameObject InicialBase, checkpoint, camara, confeti, spawnerr;
     // Start is called before the first frame update
     void Start()
     {
@@ -78,6 +78,14 @@ public class PlayerCollision : MonoBehaviour
                 Ganaste.text = "¡GANASTE!";
                 camara.SetActive(true);
                 Time.timeScale = 0;
+
+                for (int i = 0; i < 30; i++)
+                {
+                    GameObject confeticlon;
+                    confeticlon = Instantiate(confeti, spawnerr.transform.position, spawnerr.transform.rotation);
+                    Destroy(confeticlon, 4);
+                    Debug.Log(i);
+                }
             }
 
 
