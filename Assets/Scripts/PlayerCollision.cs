@@ -19,6 +19,7 @@ public class PlayerCollision : MonoBehaviour
     public int counter;
     public Text vidas, GO, Ganaste, nivel, txtCountdown, txtboton;
     public GameObject InicialBase, checkpoint, camara, confeti, spawnerr;
+    bool isCounting = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,20 +37,20 @@ public class PlayerCollision : MonoBehaviour
     void Update()
     {
         // Colisiones 
-
-        if (timeToChange < Time.timeSinceLevelLoad)
-        {          
-            if (Timecounter > 0)
-            {
-                Timecounter--;
-                txtCountdown.text = "Tiempo: " + Timecounter.ToString();
-                timeToChange++;
-            } else 
-            {
-                counter = 0;
-                Timecounter = 0;
+        if(isCounting)
+            if (timeToChange < Time.timeSinceLevelLoad)
+            {          
+                if (Timecounter > 0)
+                {
+                    Timecounter--;
+                    txtCountdown.text = "Tiempo: " + Timecounter.ToString();
+                    timeToChange++;
+                } else 
+                {
+                    counter = 0;
+                    Timecounter = 0;
+                }
             }
-        }
 
         if (transform.position.y < 0.1f)
         {
@@ -77,12 +78,13 @@ public class PlayerCollision : MonoBehaviour
                 myBS.win();
                 Ganaste.text = "¡GANASTE!";
                 camara.SetActive(true);
-                Time.timeScale = 0;
+                //Time.timeScale = 0;
+                isCounting = false;
 
-                for (int i = 0; i < 30; i++)
+                for (int i = 0; i < 10; i++)
                 {
                     GameObject confeticlon;
-                    confeticlon = Instantiate(confeti, spawnerr.transform.position, spawnerr.transform.rotation);
+                    confeticlon = Instantiate(confeti, spawnerr.transform.position + new Vector3 (1,0,0), spawnerr.transform.rotation);
                     Destroy(confeticlon, 4);
                     Debug.Log(i);
                 }
@@ -94,16 +96,23 @@ public class PlayerCollision : MonoBehaviour
                 myAM.Muerte();
                 transform.position = new Vector3(spawnx, spawny, spawnz);
                 counter--;
+                /*
+                for (int i = 10; counter <= 50; i++)
+                {
+                    int var = 20 - i;
+                    counter = counter - i;
+                    i += var;
+                }*/
             }
 
-        }
-        else
+        } else
         {
             myAM.Perdiste();
             gameObject.SetActive(false);
             GO.text = "¡Game Over!";
             camara.SetActive(true);
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
+            isCounting = false;
         }
         
     }

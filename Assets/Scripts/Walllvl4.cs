@@ -22,7 +22,7 @@ public class Walllvl4 : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-
+        
         if (col.gameObject.name == "NewPlayer")
         {
             while (i == 0)
