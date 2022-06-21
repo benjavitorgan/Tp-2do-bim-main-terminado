@@ -37,20 +37,23 @@ public class PlayerCollision : MonoBehaviour
     void Update()
     {
         // Colisiones 
-        if(isCounting)
+        if (isCounting)
+        {
             if (timeToChange < Time.timeSinceLevelLoad)
-            {          
+            {
                 if (Timecounter > 0)
                 {
                     Timecounter--;
                     txtCountdown.text = "Tiempo: " + Timecounter.ToString();
                     timeToChange++;
-                } else 
+                }
+                else
                 {
                     counter = 0;
                     Timecounter = 0;
                 }
             }
+        }
 
         if (transform.position.y < 0.1f)
         {
@@ -81,7 +84,7 @@ public class PlayerCollision : MonoBehaviour
                 //Time.timeScale = 0;
                 isCounting = false;
 
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 75; i++)
                 {
                     GameObject confeticlon;
                     confeticlon = Instantiate(confeti, spawnerr.transform.position + new Vector3 (1,0,0), spawnerr.transform.rotation);
@@ -96,13 +99,7 @@ public class PlayerCollision : MonoBehaviour
                 myAM.Muerte();
                 transform.position = new Vector3(spawnx, spawny, spawnz);
                 counter--;
-                /*
-                for (int i = 10; counter <= 50; i++)
-                {
-                    int var = 20 - i;
-                    counter = counter - i;
-                    i += var;
-                }*/
+                
             }
 
         } else
