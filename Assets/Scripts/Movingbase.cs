@@ -22,23 +22,23 @@ public class Movingbase : MonoBehaviour
         if (on == true)
         {
             speed = 0.02f;
-            transform.Translate(0, 0, -speed); //Se mueve en -z si "up" es true
+            transform.Translate(0, -speed, 0); //Se mueve en -z si "up" es true
         }
 
         else
         {
             speed = 0.01f;
-            transform.Translate(0, 0, speed); //Se mueve en z si "up" es false
+            transform.Translate(0, speed, 0); //Se mueve en z si "up" es false
         }
 
-        if (transform.position.z <= 13.2f)
+        if (transform.position.y <= 13.2f)
         {
             on = false;
             //yield return new WaitForSeconds(2);
 
         }
 
-        if (transform.position.z >= 14.3f)
+        if (transform.position.y >= 14.3f)
         {
             on = true;
             //yield return new WaitForSeconds(3);

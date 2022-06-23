@@ -76,7 +76,7 @@ public class PlayerCollision : MonoBehaviour
                 spawnz = checkpoint.transform.position.z;
             }
 
-            if (col.gameObject.name == "Final")
+            if (col.gameObject.name == "Meta")
             {
                 myBS.win();
                 Ganaste.text = "¡GANASTE!";
